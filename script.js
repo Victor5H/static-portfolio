@@ -70,7 +70,7 @@ const projectsData = [
         title: "Nanolink",
         description: "High-performance URL shortening service designed to handle massive scale. Features basic analytics and custom alias support.",
         tech: ["Spring Boot", "Redis", "NoSQL"],
-        link: "https://nanolink.harshitsathone.com" // Placeholder subdomain
+        link: "https://nanolink.harshit-tech.com" // Placeholder subdomain
     },
     {
         title: "Gadget Gizmo (Legacy)",
@@ -87,7 +87,7 @@ experienceData.forEach((job, index) => {
     item.className = 'timeline-item';
     item.setAttribute('data-aos', 'fade-up');
     item.setAttribute('data-aos-delay', index * 100);
-    
+
     item.innerHTML = `
         <div class="timeline-content">
             <span class="timeline-date">${job.period}</span>
@@ -108,7 +108,7 @@ skillsData.forEach((skill, index) => {
     card.className = 'skill-card';
     card.setAttribute('data-aos', 'zoom-in');
     card.setAttribute('data-aos-delay', index * 100);
-    
+
     card.innerHTML = `
         <div class="skill-header">
             <i class="fas ${skill.icon} skill-icon"></i>
@@ -130,7 +130,7 @@ activeProjects.forEach((project, index) => {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.setAttribute('data-aos', 'fade-up');
-    
+
     card.innerHTML = `
         <div class="project-content">
             <div class="project-title">
