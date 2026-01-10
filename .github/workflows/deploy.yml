@@ -38,4 +38,4 @@ jobs:
           gsutil -m cp -r . "gs://${{ secrets.GCP_BUCKET_NAME }}"
           
           # 3. Set cache headers for index.html (optional but good practice)
-          gsutil setmeta -h "Cache-Control:public, max-age=3600" "gs://${{ secrets.GCP_BUCKET_NAME }}/index.html"
+          gsutil setmeta -h "Cache-Control:public, max-age=60" "gs://${{ secrets.GCP_BUCKET_NAME }}/index.html"
