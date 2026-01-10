@@ -123,10 +123,8 @@ skillsData.forEach((skill, index) => {
 
 // Render Projects
 const projectsGrid = document.getElementById('projects-grid');
-// Filtering to show Nanolink first and foremost
-const activeProjects = projectsData.filter(p => p.title.includes("Nanolink"));
 
-activeProjects.forEach((project, index) => {
+projectsData.forEach((project, index) => {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.setAttribute('data-aos', 'fade-up');

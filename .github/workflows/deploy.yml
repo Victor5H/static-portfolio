@@ -35,9 +35,10 @@ jobs:
           glob: '**'
           # Exclude these patterns
           excludes: |-
-            .git/
-            .github/
+            .git/**
+            .github/**
             .gitignore
+            **/*.json
             README.md
           headers: |-
             cache-control: public, max-age=3600
