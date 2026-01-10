@@ -37,5 +37,8 @@ jobs:
           # 2. Upload all files from current directory
           gsutil -m cp -r . "gs://${{ secrets.GCP_BUCKET_NAME }}"
           
-          # 3. Set cache headers for index.html (optional but good practice)
+      - name: Set Cache-Control
+        run: |
           gsutil setmeta -h "Cache-Control:public, max-age=60" "gs://${{ secrets.GCP_BUCKET_NAME }}/index.html"
+          gsutil -m setmeta -h "Cache-Control:public, max-age=60" "gs://${{ secrets.GCP_BUCKET_NAME }}/**/*.css"
+          gsutil -m setmeta -h "Cache-Control:public, max-age=60" "gs://${{ secrets.GCP_BUCKET_NAME }}/**/*.js"
