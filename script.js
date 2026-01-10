@@ -40,27 +40,56 @@ const experienceData = [
     }
 ];
 
-// Data: Skills
+// Data: Skills (Updated with Devicons)
 const skillsData = [
     {
-        category: "Backend & Core",
+        // Flattening categories for the distinctive grid look, or keeping categories?
+        // Let's keep categories but use logos.
+        category: "Backend Core",
         icon: "fa-server",
-        tags: ["Java", "Spring Boot", "Python", "REST APIs", "Multi-threading"]
+        items: [
+            { name: "Java", icon: "devicon-java-plain" },
+            { name: "Spring Boot", icon: "devicon-spring-original" },
+            { name: "Python", icon: "devicon-python-plain" },
+            { name: "Microservices", icon: "fas fa-network-wired" } // Fallback to FA
+        ]
     },
     {
         category: "Cloud & DevOps",
         icon: "fa-cloud",
-        tags: ["Google Cloud Platform (GCP)", "AWS", "Docker", "Kubernetes", "Jenkins", "CI/CD"]
+        items: [
+            { name: "GCP", icon: "devicon-googlecloud-plain" },
+            { name: "AWS", icon: "devicon-amazonwebservices-original" },
+            { name: "Docker", icon: "devicon-docker-plain" },
+            { name: "Kubernetes", icon: "devicon-kubernetes-plain" },
+            { name: "Jenkins", icon: "devicon-jenkins-line" }
+        ]
     },
     {
-        category: "Data & Messaging",
+        category: "Data & Streams",
         icon: "fa-database",
-        tags: ["MongoDB", "PostgreSQL", "Apache Kafka", "Redis"]
+        items: [
+            { name: "MongoDB", icon: "devicon-mongodb-plain" },
+            { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+            { name: "Redis", icon: "devicon-redis-plain" },
+            { name: "Kafka", icon: "devicon-apachekafka-original" } // Needs checking if available, usually is.
+        ]
+    }
+];
+
+// Data: Certifications
+const certsData = [
+    {
+        title: "Professional Cloud Architect",
+        issuer: "Google Cloud",
+        date: "May 2024",
+        icon: "fab fa-google" // Or custom GCP logo
     },
     {
-        category: "Tools",
-        icon: "fa-toolbox",
-        tags: ["Git", "GitHub", "Bash Scripting", "JIRA"]
+        title: "Associate Cloud Engineer",
+        issuer: "Google Cloud",
+        date: "Dec 2023",
+        icon: "fab fa-google"
     }
 ];
 
@@ -70,15 +99,70 @@ const projectsData = [
         title: "Nanolink",
         description: "High-performance URL shortening service designed to handle massive scale. Features basic analytics and custom alias support.",
         tech: ["Spring Boot", "Redis", "NoSQL"],
-        link: "https://nanolink.harshit-tech.com" // Placeholder subdomain
+        link: "https://nanolink.harshit-tech.com"
     },
     {
         title: "Gadget Gizmo (Legacy)",
         description: "Microservices-based e-commerce backend with JWT authentication and Kafka-based order processing.",
         tech: ["Microservices", "GCP", "Kafka"],
-        link: "#" // No link as per request, but keeping record
+        link: "#"
     }
 ];
+
+// Helper: Typer Effect for Terminal
+function typeWriter(element, text, speed = 50) {
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Render Terminal Content
+const terminalContent = document.getElementById('terminal-content');
+const terminalLines = [
+    `<span class="prompt">harshit@server:~$</span> java -jar portfolio-backend.jar`,
+    `<span class="output info">[INFO] Starting PortfolioApplication v1.0.0</span>`,
+    `<span class="output">[OK] Loaded Profile: <span class="success">Senior Software Engineer</span></span>`,
+    `<span class="output">[OK] Active Module: <span class="success">Spring Boot Microservices</span></span>`,
+    `<span class="output">[OK] Active Module: <span class="success">Google Cloud Architecture</span></span>`,
+    `<span class="output">Server started on port 8080 (http). Ready to scale. 🚀</span>`,
+    `<span class="prompt">harshit@server:~$</span> <span class="cursor">_</span>`
+];
+
+let lineIndex = 0;
+function typeTerminal() {
+    if (lineIndex < terminalLines.length) {
+        const line = document.createElement('div');
+        line.className = 'command-line';
+        // If it's the last line (prompt with cursor), don't type it letter by letter, just show it
+        if (lineIndex === terminalLines.length - 1) {
+            line.innerHTML = terminalLines[lineIndex];
+            terminalContent.appendChild(line);
+        } else {
+            // Just set HTML for simplicity and speed, or type text content
+            // For rich HTML typing, it's complex. Let's just fade in lines for "boot" effect.
+            line.innerHTML = terminalLines[lineIndex];
+            line.style.opacity = 0;
+            line.style.animation = "fadeIn 0.3s forwards";
+            terminalContent.appendChild(line);
+            setTimeout(typeTerminal, 600); // Delay between lines
+        }
+        lineIndex++;
+    }
+}
+// Add simple fade keyframe dynamically
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }`;
+document.head.appendChild(styleSheet);
+
+// Start terminal typing after a small delay
+setTimeout(typeTerminal, 1000);
+
 
 // Render Experience
 const experienceList = document.getElementById('experience-list');
@@ -101,9 +185,11 @@ experienceData.forEach((job, index) => {
     experienceList.appendChild(item);
 });
 
-// Render Skills
+// Render Skills (New Logo Grid)
 const skillsGrid = document.getElementById('skills-grid');
-skillsData.forEach((skill, index) => {
+skillsData.forEach((category, index) => {
+    // Instead of category cards, let's just dump all logos in a nice grid or grouped by category?
+    // Using previous card structure but with logos inside.
     const card = document.createElement('div');
     card.className = 'skill-card';
     card.setAttribute('data-aos', 'zoom-in');
@@ -111,15 +197,40 @@ skillsData.forEach((skill, index) => {
 
     card.innerHTML = `
         <div class="skill-header">
-            <i class="fas ${skill.icon} skill-icon"></i>
-            <h3>${skill.category}</h3>
+            <i class="fas ${category.icon} skill-icon" style="font-size: 1.5rem; margin-right: 0.5rem"></i>
+            <h3>${category.category}</h3>
         </div>
-        <div class="skill-tags">
-            ${skill.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        <div class="skill-tags" style="justify-content: center; gap: 1.5rem; margin-top: 1rem;">
+            ${category.items.map(item => `
+                <div class="tag-logo" title="${item.name}" style="text-align: center;">
+                    <i class="${item.icon} skill-icon-large"></i>
+                    <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 5px;">${item.name}</div>
+                </div>
+            `).join('')}
         </div>
     `;
     skillsGrid.appendChild(card);
 });
+
+// Render Certifications
+const certsGrid = document.getElementById('certs-grid');
+if (certsGrid) {
+    certsData.forEach((cert, index) => {
+        const card = document.createElement('div');
+        card.className = 'cert-card';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', index * 100);
+
+        card.innerHTML = `
+            <i class="${cert.icon} cert-icon"></i>
+            <div class="cert-info">
+                <h3>${cert.title}</h3>
+                <div class="cert-issuer">${cert.issuer} • ${cert.date}</div>
+            </div>
+        `;
+        certsGrid.appendChild(card);
+    });
+}
 
 // Render Projects
 const projectsGrid = document.getElementById('projects-grid');
