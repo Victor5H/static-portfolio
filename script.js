@@ -59,7 +59,6 @@ const skillsData = [
         icon: "fa-cloud",
         items: [
             { name: "GCP", icon: "devicon-googlecloud-plain" },
-            { name: "AWS", icon: "devicon-amazonwebservices-original" },
             { name: "Docker", icon: "devicon-docker-plain" },
             { name: "Kubernetes", icon: "devicon-kubernetes-plain" },
             { name: "Jenkins", icon: "devicon-jenkins-line" }
