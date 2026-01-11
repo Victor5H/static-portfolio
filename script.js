@@ -101,7 +101,7 @@ const projectsData = [
         link: "https://nanolink.harshit-tech.com"
     },
     {
-        title: "Gadget Gizmo (Legacy)",
+        title: "Gadget Gizmo",
         description: "Microservices-based e-commerce backend with JWT authentication and Kafka-based order processing.",
         tech: ["Microservices", "GCP", "Kafka"],
         link: "#"
