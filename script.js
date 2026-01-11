@@ -97,7 +97,7 @@ const projectsData = [
     {
         title: "Nanolink",
         description: "High-performance URL shortening service designed to handle massive scale. Features basic analytics and custom alias support.",
-        tech: ["Spring Boot", "Redis", "NoSQL"],
+        tech: ["Spring Boot", "Redis", "Kafka","SQL"],
         link: "https://nanolink.harshit-tech.com"
     },
     {
