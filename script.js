@@ -13,10 +13,10 @@ const experienceData = [
         company: "Persistent Systems Limited",
         period: "Oct 2025 – Present",
         description: [
-            "Led development of Spring Boot applications processing 2M+ insurance records daily, improving throughput by 35%.",
-            "Optimized Kafka pipelines to handle 75K+ events per min (<200ms latency).",
-            "Reduced release cycles from 2 weeks to 5 days by enhancing CI/CD pipelines.",
-            "Reduced incident resolution time by 40% through improved observability."
+            "Designed and delivered a secure short-link generation and resolution service using Java and Spring Boot to support SMS-based banking communications, reducing SMS payload size by 60 percent and improving delivery success rates.",
+            "Implemented TTL-driven link storage using a NoSQL datastore, ensuring 100 percent automatic expiration of customer links and eliminating manual cleanup in line with banking security policies.",
+            "Integrated Redis caching to enable low-latency lookups for read-heavy traffic, reducing average link resolution latency by 40 percent for customer-facing access flows.",
+            "Participated in architectural discussions focused on scalability, fault tolerance, and security, contributing to designs supporting high-volume notification traffic in regulated financial systems."
         ]
     },
     {
@@ -24,9 +24,11 @@ const experienceData = [
         company: "Persistent Systems Limited",
         period: "Sep 2023 – Sep 2025",
         description: [
-            "Built Spring Boot services processing 1M+ daily records, boosting performance by 30%.",
-            "Achieved 99.9% uptime SLA on GCP deployments.",
-            "Reduced production incidents by 15% through scalability and fault tolerance improvements."
+            "Developed authentication and authorization services using Java and Spring Boot, securing 10+ internal APIs across multiple banking applications.",
+            "Implemented JWT-based access and refresh token flows, enabling stateless, horizontally scalable session management and supporting thousands of concurrent user sessions.",
+            "Designed role-based and permission-based authorization mechanisms to enforce fine-grained access control, reducing unauthorized access attempts by 30 percent.",
+            "Integrated token validation and custom security filters to protect sensitive endpoints, improving API security posture and audit readiness.",
+            "Used Git and GitHub for version control, code reviews, and collaborative development, contributing to faster review cycles and higher code quality."
         ]
     },
     {
@@ -97,7 +99,7 @@ const projectsData = [
     {
         title: "Nanolink",
         description: "High-performance URL shortening service designed to handle massive scale. Features basic analytics and custom alias support.",
-        tech: ["Spring Boot", "Redis", "Kafka","SQL"],
+        tech: ["Spring Boot", "Redis", "Kafka", "SQL"],
         link: "https://nanolink.harshit-tech.com"
     },
     {
